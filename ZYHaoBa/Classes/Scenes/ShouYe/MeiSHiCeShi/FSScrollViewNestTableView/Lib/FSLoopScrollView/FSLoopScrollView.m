@@ -165,8 +165,7 @@
     else if ([data isKindOfClass:[NSString class]]){
         NSString *imageName = (NSString *)data;
         if ([imageName hasPrefix:@"http"]) {
-//            [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
-            [imageView setImage:[UIImage imageNamed:imageName]];
+            [imageView setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"222222222"]];
         }else{
             imageView.image = [UIImage imageNamed:imageName];
         }
@@ -355,6 +354,10 @@
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString:string];
     
     NSMutableAttributedString *text1 = [[NSMutableAttributedString alloc] initWithString:labelText];
+    //颜色 设置
+    [text1 addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, text1.length)];
+    //样式、大小 设置
+    [text1 addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:15] range:NSMakeRange(0, text1.length - 1)];
     
     [text appendAttributedString:text1];
     
