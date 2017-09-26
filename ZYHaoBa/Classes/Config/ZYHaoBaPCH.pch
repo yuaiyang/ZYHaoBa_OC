@@ -1,0 +1,50 @@
+//
+//  ZYHaoBaPCH.pch
+//  ZYHaoBa
+//
+//  Created by ylcf on 16/8/11.
+//  Copyright © 2016年 正羽. All rights reserved.
+//
+
+#warning 注意：
+// 在pch文件中定义的宏或者其他引入都会自动包含在项目中的其他文件当中
+// pch是一个全局引用的一个文件
+
+// 强调，不能因为pch文件方便，就把所有要引入的文件都放在pch中，如果太多，系统的负担会很大
+// 一定要确认是几乎系统中所有文件都需要的程序才在此处导入。
+
+// 要解决NSLog的问题，可以通过宏定义的方式，进行转换
+// DEBUG = YES(1) 表示应用程序处于开发调试状态
+
+// 应用程序发布后，DEBUG就不存在（新建程序使用以下debug就好）
+// 以下 __VA_ARGS__ 实际是把前面的 ... 复制过去执行打印
+//#ifdef DEBUG
+//#define MyLog(...) NSLog(__VA_ARGS__)
+//#else
+//#define MyLog(...)
+//#endif
+
+#ifndef ZYHaoBaPCH_pch
+#define ZYHaoBaPCH_pch
+
+#endif /* ZYHaoBaPCH_pch */
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>//7.0版本以前需要导入
+
+
+// 一些系统设置，个人配置，接口
+#import "System.h"
+
+// 延展
+#import "UIView+Extension.h"
+#import "UIView+AutoLayout.h"
+#import "UIImage+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+// 多功能私用
+#import "Additions.h"
+
+
+#endif

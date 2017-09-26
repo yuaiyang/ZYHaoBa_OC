@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JianDanDongHuaVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qv-Dt-zuH">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ASB-PM-WiO"/>
+                    </constraints>
+                    <state key="normal" title="上移"/>
+                    <connections>
+                        <action selector="shang:" destination="-1" eventType="touchUpInside" id="Eqp-4k-wmd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyL-6M-smt">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="cKL-hc-RRG"/>
+                    </constraints>
+                    <state key="normal" title="下移"/>
+                    <connections>
+                        <action selector="xia:" destination="-1" eventType="touchUpInside" id="HBt-S0-Tkn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dP1-lz-IJ7">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="A4J-Sl-3hW"/>
+                    </constraints>
+                    <state key="normal" title="左移"/>
+                    <connections>
+                        <action selector="zuo:" destination="-1" eventType="touchUpInside" id="sVW-Vb-IX8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-aA-Wwr">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="vXz-Zs-M5F"/>
+                    </constraints>
+                    <state key="normal" title="旋转"/>
+                    <connections>
+                        <action selector="xuanzhuan:" destination="-1" eventType="touchUpInside" id="Wpq-x0-A4q"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFz-GB-SMu">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="tAW-Pp-zgT"/>
+                    </constraints>
+                    <state key="normal" title="右移"/>
+                    <connections>
+                        <action selector="you:" destination="-1" eventType="touchUpInside" id="WDT-eu-4Vf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-RC-LBk">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="47" id="I8D-af-b8W"/>
+                        <constraint firstAttribute="height" constant="30" id="t30-Se-MMT"/>
+                    </constraints>
+                    <state key="normal" title="翻转"/>
+                    <connections>
+                        <action selector="fanZhuan:" destination="-1" eventType="touchUpInside" id="maE-aN-yPS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PF7-RC-LBk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="1FN-Fv-3w6"/>
+                <constraint firstItem="3qv-Dt-zuH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6Ig-Ym-Pda"/>
+                <constraint firstItem="3qv-Dt-zuH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="8wa-RZ-O8i"/>
+                <constraint firstItem="r3e-aA-Wwr" firstAttribute="width" secondItem="3qv-Dt-zuH" secondAttribute="width" id="A2Z-CI-xj8"/>
+                <constraint firstItem="dP1-lz-IJ7" firstAttribute="width" secondItem="3qv-Dt-zuH" secondAttribute="width" id="A2c-l1-q7K"/>
+                <constraint firstItem="dP1-lz-IJ7" firstAttribute="leading" secondItem="lyL-6M-smt" secondAttribute="trailing" constant="15" id="CBW-vk-bTN"/>
+                <constraint firstAttribute="trailing" secondItem="r3e-aA-Wwr" secondAttribute="trailing" constant="15" id="CRi-MO-QeA"/>
+                <constraint firstItem="lyL-6M-smt" firstAttribute="leading" secondItem="3qv-Dt-zuH" secondAttribute="trailing" constant="15" id="HpR-Cg-oAe"/>
+                <constraint firstItem="dP1-lz-IJ7" firstAttribute="leading" secondItem="lyL-6M-smt" secondAttribute="trailing" constant="15" id="Kod-sc-G04"/>
+                <constraint firstItem="dP1-lz-IJ7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LdA-O3-x0R"/>
+                <constraint firstItem="lyL-6M-smt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LhU-1i-gJY"/>
+                <constraint firstItem="oFz-GB-SMu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="NFT-Xo-lBa"/>
+                <constraint firstItem="oFz-GB-SMu" firstAttribute="width" secondItem="3qv-Dt-zuH" secondAttribute="width" id="ZEe-zr-4xM"/>
+                <constraint firstItem="r3e-aA-Wwr" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="aO6-Hf-K3y"/>
+                <constraint firstItem="PF7-RC-LBk" firstAttribute="top" secondItem="3qv-Dt-zuH" secondAttribute="bottom" constant="10" id="alX-FR-eog"/>
+                <constraint firstItem="r3e-aA-Wwr" firstAttribute="leading" secondItem="oFz-GB-SMu" secondAttribute="trailing" constant="15" id="bMN-Ja-Brg"/>
+                <constraint firstItem="oFz-GB-SMu" firstAttribute="leading" secondItem="dP1-lz-IJ7" secondAttribute="trailing" constant="15" id="g2o-dj-PRj"/>
+                <constraint firstItem="lyL-6M-smt" firstAttribute="width" secondItem="3qv-Dt-zuH" secondAttribute="width" id="kJ5-oQ-6sL"/>
+                <constraint firstItem="lyL-6M-smt" firstAttribute="leading" secondItem="3qv-Dt-zuH" secondAttribute="trailing" constant="15" id="lke-Dn-TfB"/>
+                <constraint firstItem="r3e-aA-Wwr" firstAttribute="leading" secondItem="oFz-GB-SMu" secondAttribute="trailing" constant="15" id="sG3-Vr-SX7"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

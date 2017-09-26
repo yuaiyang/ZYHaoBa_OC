@@ -1,0 +1,423 @@
+关于TabBarViewController的相关设置
+	1.设置其图片和子视图控制器
+	eg：viewDidLoad调用以下代码依次加入
+	// 添加子控制器
+    HMHomeViewController *home = [[HMHomeViewController alloc] init];
+    [self addOneChlildVc:home title:@"首页" imageName:@"tabbar_home" selectedImageName:@"tabbar_home_selected"];
+	/**
+ *  添加一个子控制器
+ *
+ *  @param childVc           子控制器对象
+ *  @param title             标题
+ *  @param imageName         图标
+ *  @param selectedImageName 选中的图标
+ */
+- (void)addOneChlildVc:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
+{
+//    childVc.view.backgroundColor = HMRandomColor;
+    // 设置标题
+    // 相当于同时设置了tabBarItem.title和navigationItem.title
+    childVc.title = title;
+    
+    // 设置图标
+    childVc.tabBarItem.image = [UIImage imageNamed:imageName];
+    
+    // 设置选中的图标 声明这张图片用原图(别渲染)
+    UIImage *selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    childVc.tabBarItem.selectedImage = selectedImage;
+    // 添加为tabbar控制器的子控制器
+    HMNavigationController *nav = [[HMNavigationController alloc] initWithRootViewController:childVc];
+    [self addChildViewController:nav];
+}	
+	
+	2.更改TabBarViewController图片位置，偏移量
+	tabbarItem.imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
+
+	
+
+
+关于navigationBar的相关设置
+	1.关于导航栏按钮统一设置（包含其子控制器按钮统一，其子控制器如果需要更改重写其方法即可）两种方法（推荐第二种方法）：
+	1>创建一个根视图控制器里面写上导航栏设置，然后其他控制器均继承于它
+	eg：根视图控制器代码
+	- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 设置导航栏按钮
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(back)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_more" highImageName:@"navigationbar_more_highlighted" target:self action:@selector(more)];
+}
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)more {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}	
+
+	存在问题：要是根视图控制器是继承UIViewController那么UITableViewController则不能使用，反之，那么就会麻烦
+
+	2>创建一个导航栏控制器（在其子控制器如果需要更改重写其方法即可）
+	eg：自定义导航栏控制器代码
+	/**
+ *  能拦截所有push进来的子控制器
+ */
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (self.viewControllers.count > 0) { // 如果现在push的不是栈底控制器(最先push进来的那个控制器)
+        viewController.hidesBottomBarWhenPushed = YES;
+        // 设置导航栏按钮
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(back)];
+        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_more" highImageName:@"navigationbar_more_highlighted" target:self action:@selector(more)];
+    }
+    [super pushViewController:viewController animated:animated];
+}
+- (void)back {
+#warning 这里用的是self, 因为self就是当前正在使用的导航控制器
+    [self popViewControllerAnimated:YES];
+}
+- (void)more {
+    [self popToRootViewControllerAnimated:YES];
+}
+	
+	2.设置导航栏按钮(颜色，字体大小…)两种方法：
+	1>直接设置（富文本）：
+	eg：
+         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全部已读" style:(UIBarButtonItemStylePlain) target:self action:@selector(didClickRightButtonItemReloadData)];
+    //    富文本
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:15<=10], NSFontAttributeName,nil] forState:UIControlStateNormal];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+	
+	2>通过按钮设置：
+	eg：UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"全部已读" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    // 设置按钮文字的尺寸 为 按钮自己的尺寸
+    button.size = [button.currentTitle sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}];
+    // 监听按钮点击
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    // 设置为不可点击
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+	
+	3.调整导航栏按钮位置（注意：不可以去掉以下negativeSpacer，必须是设置negativeSpacer.width调整位置，否则不生效）
+	eg：
+	mineBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    mineBtn.frame = CGRectMake(0, 0, 44, 44);
+    [mineBtn setBackgroundImage:[UIImage imageNamed:@"Personal-Center"] forState:UIControlStateNormal];
+    [mineBtn setBackgroundImage:[UIImage imageNamed:@"Personal-Center"] forState:UIControlStateHighlighted];
+    [mineBtn addTarget:self action:@selector(ClickMineMsg:) forControlEvents:UIControlEventTouchUpInside];
+    // 调整 leftBarButtonItem 在 iOS7 下面的位置
+    UIBarButtonItem *backNavigationItem = [[UIBarButtonItem alloc] initWithCustomView:mineBtn];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    self.navigationItem.leftBarButtonItems = @[negativeSpacer, backNavigationItem];
+	
+	4.设置导航栏背景颜色（实际是更改其背景图片）：
+	eg：以下设置可以去掉导航栏下部片黑色横线
+	-(void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[self imageWithBgColor:[UIColor blackColor]]];
+}
+-(UIImage *)imageWithBgColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+	5.设置导航栏外观（主要是各种状态的改变，在基类导航栏实现其他子类都会实现）
+	eg：
+	// 通过appearance对象能修改整个项目中所有UIBarButtonItem的样式
+    UIBarButtonItem *appearance = [UIBarButtonItem appearance];
+    // 设置普通状态的文字属性
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[UITextAttributeTextColor] = [UIColor orangeColor];
+    textAttrs[UITextAttributeFont] = [UIFont systemFontOfSize:15];
+    [appearance setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+    
+    // 设置高亮状态的文字属性
+    NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionary];
+    highTextAttrs[UITextAttributeTextColor] = [UIColor redColor];
+    highTextAttrs[UITextAttributeFont] = [UIFont systemFontOfSize:15];
+    [appearance setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+    
+    // 设置不可用状态(disable)的文字属性
+    NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionary];
+    disableTextAttrs[UITextAttributeTextColor] = [UIColor lightGrayColor];
+    disableTextAttrs[UITextAttributeFont] = [UIFont systemFontOfSize:15];
+    [appearance setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+
+
+
+
+注意：	
+	1.把代码放在最应该放的地方：eg：tableViewCotrolle就负责管理他的字控制器；view就负责视图展示；model就负责数据处理；ViewController就负责逻辑处理；tool工具类用于一些没有父类而又需要经常调用的方法；分类用于有父类而又经常需要调用的方法；宏用于经常调用切固定的代码（宏的实质是复制代码）；延展用于对自身方法的扩展；继承用于需要使用父类的一些属性或者方法，但是有需要自身有一些与父类无关的特有属性，仅供自己使用；基类主要用于添加子类基本都需要的方法或者一些属性
+	2.要学会写分类使用其特有属性，有系统父类的基本都使用继承
+	3.第一次使用某个类都会调用+ (void)initialize方法（当第一次使用这个类的时候调用1次）；
+	4.使用NSUserDefaults时注意：eg：NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];[defaults setObject:currentVersion forKey:versionKey];保存之后如果需要立即保存需要调用：[defaults synchronize];否则不知道什么时候保存，可能会存在没有保存的情况
+	5.里面有firstObject不用index0 原有是如果不存在数据，那么firstObject为空，但是如果使用index0 那么0就会造成数组越界 导致程序崩溃
+	6.字典不能存储nil，所以往字典存储东西需要做判空处理
+	7.（不要设置自己的代理为自己本身）在自定义控件中最好不要使用代理来监听自身控件的某个属性改变：因为外界调用控件可能会重新设置代理，那么内部代理就作废了，因此一般使用通知（继承自视图），或者addTarget（继承自控制器）来进行监听；基本每个控件内部属性发生改变时都会做两件事：发送一个通知同时通知代理
+	8.在使用继承自UIView的控件不能头文件设置参数为frame，因为view本身就有frame，那样会覆盖系统本身frame，但是继承自NSObject的控件可以设置头文件frame属性
+	9.在cell中操作控件时：一定注意有if就一定有else（由于cell的复用）,有if没有else那么就会复用以前的cell会出现控件显示问题
+	10.在做项目时尽量减少各个控件或者参数之间依赖，也尽量做到更改代码顺序对程序没有影响
+	11.在实体文件夹下面的图片，必须读取路径才可以使用imageNamed，否则读取不到图片，imageNamed只能读取根目录图片
+	12.使用懒加载时，好处在于设置为nil下次使用就会重新创建，在控件重复使用时，记得每使用完一次都需要清空，否则循环使用时就会造成数据重复
+	13.在点击视图时：touchesEnded和touchesCancelled不同等，eg：点击视图上点击事件被判定为手势，那么会被touchesCancelled拦截，不会执行touchesEnded方法，使用到时注意一下
+	14.有时候在设置时间时，在真机上无法显示时间，是由于没有设置是哪一个国家时间格式，只需要设置地区就好啦：eg：NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
+#warning 真机调试的时候，必须加上这句
+    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+
+	15.别在scrollView.subviews中通过索引来查找对应的子控件，因为它可能包含其他子控件，比如滑条
+	16设置按钮文字时，一般需要设置选中状态和常规状态，因为按钮有可能处在不同状态，可能会导致显示不一致
+	
+	17.如果字符串属性是copy策略，重写setter方法最好写上_placehoder = [placehoder copy];
+
+
+
+技巧：
+	1.如果遇见苹果内部控件是私有的或者是隐藏不愿意让我们随意改动的控件，那么可以使用NSClassFromString将字符串转为类名进行比对，然后进行相应处理；否则直接使用类名会报错找不到：eg：[tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]
+	2.当发现某个控件内部某种控件不好更改时需要进行遍历往上或者往下查找（注意：continue的使用可以减少损耗哦）
+	eg：    for (UILabel *label in tabBarButton.subviews) {
+        // 说明不是个Label
+        if (![label isKindOfClass:[UILabel class]]) continue;
+
+        // 设置字体
+        label.font = [UIFont systemFontOfSize:10];
+        if (selectedIndex == index) { // 说明这个Button选中, 设置label颜色为橙色
+            label.textColor = [UIColor orangeColor];
+        } else { // 说明这个Button没有选中, 设置label颜色为黑色
+            label.textColor = [UIColor blackColor];
+        }
+    }
+	
+	3.数字四舍五入的方法：+0.5
+	eg：UIPageControl获得页码
+	// 获得页码
+    CGFloat doublePage = scrollView.contentOffset.x / scrollView.width;
+    int intPage = (int)(doublePage + 0.5);
+    
+    // 设置页码
+    self.pageControl.currentPage = intPage;
+
+	4.监听控件的事件：
+         1.delegate
+         2.- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+         3.通知
+	通知：eg：
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self];
+#pragma mark - 监听文字改变
+- (void)textDidChange
+{
+    self.placehoderLabel.hidden = (self.text.length != 0);
+}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+	
+	4.在分层实现的代码中，如果每个分层的frame都是独立的，而某个控件是包含分层中两个frame，并会随着其中一个frame改变而改变frame，那么只需要在两者之间桥梁进行设置，不能再控件中去关联属性更改，那样胡更加麻烦
+	5.在使用model数据模型中，如果要更改从服务器返回的参数值，或者根据参数判断情况，那么直接重写model属性的getter方法即可，或者提供一个已经进行判断的方法即可，将数据处理封装在model内；也方便查找
+eg1：-(NSString *)name {return [NSString stringWithFormat:@"我是%@",_name];}
+eg2：将模型中属性数组转模型：<.h>:@property (nonatomic, strong) NSArray *pic_urls; <.m:>- (NSDictionary *)objectClassInArray{return @{@"pic_urls" : [HMPhoto class]};}
+eg3：判断是否是会员：- (BOOL)isVip{// 是会员return self.mbtype > 2;}
+	
+	6.在一个类中，如果是属性那么/** str */在你写代码调用点语法时会有注释，如果是方法则没有提示，需要使用[]调用方法才会有提示
+	7.在对cell进行赋值，更改属性或者设置属性参数时，如果需要参数是不断更改的，那么就需要在getter方法设置，每次取出进行更改，如果是更改一次就不需要更改的，那么直接在setter方法调用一次就好，一般情况下对字符串操作是比较耗费内存的。所以只更改一次，那么尽量在setter方法里面设置
+
+	8.在计算数据行数列数时，如果列数确定计算行数，那么有一个公式可以直接使用：比如0~9个不确定数据，每列3个，计算行数 那么计算公式是：个数-a 列数-b 行数=（a+b-1）/b
+	
+	9.移除所有子视图简单方法：[self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	
+	10.在很多时候封装一个控件，不希望被人可以随意更改内部属性，那么可以继承自UIView，那样别人拿不到你的属性自然就不可以更改属性值eg:自定义lable继承自UIView，那么内部text属性就无法被外界获取更改
+	
+	11.获取一个视图被点击的点：在touchesBegan方法中调用UITouch *touch = [touches anyObject];CGPoint point = [touch locationInView:touch.view]; point就是被点击的点
+
+	12.遍历字符串执行block方法：enumerateObjectsUsingBlock方法里block内部id对象就是你需要找的对象，在block内部对id对象进行相应处理，停止遍历使用*stop = YES;
+	
+	13.在使用代理时，如果想要在执行代理前就默认执行某个操作，那么在代理属性的setter方法中设置即可
+	14.
+
+
+
+
+
+
+
+
+
+
+
+其他记录：
+	1.Xcode的插件安装路径: /Users/用户名/Library/Application Support/Developer/Shared/Xcode/Plug-ins
+
+
+
+
+
+
+
+
+
+学习记录：
+	1.正规公司每个人分内之事：产品经理（原型图，产品需求文档，把控全局方向），设计（设计，切图，图片命名规范），开发后台（开发文档）
+	2.项目使用git：注意：每次先更新后提交
+	3.搭建环境注意：分层（网络层，视图层，逻辑处理层），模块（根据项目逻辑分模块）
+	4.学会抽取代码，只需传递参数即可以替换一堆重复代码
+	eg：tableViewCotroller添加子控制器
+	/**
+ *  添加一个子控制器
+ *
+ *  @param childVc           子控制器对象
+ *  @param title             标题
+ *  @param imageName         图标
+ *  @param selectedImageName 选中的图标
+ */
+- (void)addOneChlildVc:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
+{
+    childVc.view.backgroundColor = HMRandomColor;
+    // 设置标题
+    // 相当于同时设置了tabBarItem.title和navigationItem.title
+    childVc.title = title;
+//    childVc.tabBarItem.title = title; // tabbar标签上
+//    childVc.navigationItem.title  = title; // 导航栏
+    // 设置图标
+    childVc.tabBarItem.image = [UIImage imageNamed:imageName];
+    // 设置选中的图标
+    UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
+    if (iOS7) {
+        // 声明这张图片用原图(别渲染)
+        selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    childVc.tabBarItem.selectedImage = selectedImage;
+    // 添加为tabbar控制器的子控制器
+    HMNavigationController *nav = [[HMNavigationController alloc] initWithRootViewController:childVc];
+    [self addChildViewController:nav];
+}
+
+	5.遇见一个方法多处使用时：考虑创建类工具(继承自NSObject工具类)/创建分类
+     eg：创建分类： #import "UIImage+Extension.h"
+@implementation UIImage (Extension)
++ (UIImage *)imageNamed:(NSString *)name
+{
+    UIImage *image = nil;
+    if (iOS7) { // 处理iOS7的情况
+        NSString *newName = [name stringByAppendingString:@"_os7"];
+        image = [UIImage imageNamed:newName];
+    }
+
+    if (image == nil) {
+        image = [UIImage imageNamed:name];
+    }
+    return image;
+}
+@end
+
+   	6.设置按钮文字的尺寸为按钮自己的尺寸 button.size = [button.currentTitle sizeWithFont:button.titleLabel.font];(需要添加一个分类UIView+Extension：方便设置UIView相关位置属性)；iOS7以后使用：button.size = [button.currentTitle sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}];
+
+	7. 技巧: 为了让某个按钮的背景消失, 可以设置一张完全透明的背景图片
+	8.自定义方法传递参数（大部分参数中可以添加 nullable 不添加目前知道没问题 —>action:(nullable SEL)action）：
+	eg：
+	字符串： highImageName:(NSString *)highImageName 
+	一般是不确定对象（eg：控制器）target:(id)target 
+	方法：action:(SEL)action 
+	枚举：style:(UIBarButtonItemStyle)style  —-> UIBarButtonItemStyle枚举名
+	布尔类型：animated:(BOOL)animated
+	时间：Duration:(NSTimeInterval)duration
+	block无参数：animations:(void (^)(void))animations 
+	block有参数：failure:(void (^)(NSError *error))failure
+
+	9.创建了一个控件，就是看不见
+ 	 1.当前控件没有添加到父控件中
+ 	 2.当前控件的hidden = YES
+ 	 3.当前控件的alpha <= 0.01
+	 4.没有设置尺寸（frame.size、bounds.size）
+	 5.位置不对（当前控件显示到窗口以外的区域）
+	 6.背景色是clearColor
+	 7.当前控件被其他可见的控件挡住了
+	 8.当前控件是个显示图片的控件（没有设置图片\图片不存在，比如UIImageView）
+	 9.当前控件是个显示文字的控件（没有设置文字\文字颜色跟后面的背景色一样，比如UILabel、UIButton）
+	 10.检查父控件的前9种情况
+
+	10.一个控件能看见，但是点击后没有任何反应：
+ 	 1.当前控件的userInteractionEnabled = NO
+ 	 2.当前控件的enabled = NO
+ 	 3.当前控件不在父控件的边框范围内
+ 	 4.当前控件被一个背景色是clearColor的控件挡住了
+ 	 5.检查父控件的前4种情况
+	 6. 文本输入框没有在主窗口上：文本输入框的文字无法输入
+
+	11.UIButton的内部控件位置：contentEdgeInsets : 切掉按钮内部的内容；imageEdgeInsets : 切掉按钮内部UIImageView的内容；titleEdgeInsets : 切掉按钮内部UILabel的内容
+
+	12.控制器切换方法：
+	// push : [self.navigationController pushViewController:vc animated:NO];
+	// modal : [self presentViewController:vc animated:NO completion:nil];
+	// window.rootViewController : window.rootViewController = vc;
+	前两种原有控制器会存在，如果用于不可逆跳转，那么使用第三种
+	
+	13. iOS设备一些固定高度
+/**
+ 44 : cell的默认高度、导航栏的可见高度
+ 49 : UITabBar的默认高度
+ 64 : 从窗口顶部到导航栏底部
+ 20 : 状态栏高度
+ 320 : 竖屏情况下的屏幕宽度
+ 480 : 竖屏情况下的3.5 inch 的屏幕高度
+ 568 : 竖屏情况下的4.0 inch 的屏幕高度
+ */
+	
+	14.使用transform做动画时label.transform = CGAffineTransformIdentity;是表示恢复到原来的位置的意思
+
+	15.block：1.如果没有对block进行copy操作，block就存储于栈空间2.如果对block进行copy操作，block就存储于堆空间3.如果block存储于栈空间，不会对block内部所用到的对象产生强引用4.如果block存储于堆空间，就会对block内部所用到的对象产生强引用
+
+	16.使用定时器：在可以滚动的页面，如果使用定时器，页面一直处于滚动状态，那么定时器是会停止工作的（原因：定时器工作是在主线程中，所以一直滚动视图 那么视图会阻塞主线程，导致定时器停止运行）处理办法：将定时器添加到NSRunLoop并设置mode为：eg：
+NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
+[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+
+	17.图片处理：设置图片全控件显示，切掉超出部分：eg：self.contentMode = UIViewContentModeScaleAspectFill;
+        self.clipsToBounds = YES;
+	18.创建可变数组时不同创建方式的区别：
+	1️⃣-[NSMutableArray array];在需要内存时去去申请内存，但是申请内存实际是比较耗性能的
+	2️⃣-[NSMutableArray arrayWithCapacity:10];直接申请可以存放多少个对象的内存，一次申请，不耗性能，因此在知道需要多少内存的数组情况下使用，用于提高性能
+	19.用空串替换掉所有的.0： NSString *defaultTitle = [defaultTitle stringByReplacingOccurrencesOfString:@".0" withString:@""];
+	20.根据文字大小计算文字的尺寸：CGSize titleSize = [title sizeWithFont:self.titleLabel.font];
+	21.创建图片视图控件不一样创建方式的不同意义：
+	1️⃣UIImageView *image = [[UIImageView alloc] init];imageView.image = [UIImage imageNamed:@"111"];这种创建方式没有尺寸，图片不能显示
+	2️⃣UIImageView *imageView = [[UIImageView alloc] initWithImage:@"111”];这种创建方式默认显示大小为图片大小，同时默认x=0；y=0；因此可以显示
+	22.在自定义控件时一般设置尺寸在-(void)layoutSubviews里面设置，不在初始化设置是最严谨的，当然如果是固定的也可以在初始化设置
+	23.设置UIScrollView在第一页：_scrollView.contentOffset = CGPointZero;
+	24.一般放置图片后，图片后面出现蓝色考虑是不是被系统自动渲染了，因此取消渲染：image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	
+	25.转换坐标系（将一个视图坐标系转换为另外一个视图坐标系）：
+	26.添加手势利用手势捕获触摸点：CGPoint point = [recognizer locationInView:recognizer.view];
+	27.停止遍历简便方法：*stop = YES;
+	28.禁止视图动画<注意是整个app视图动画呗禁止，所以使用以后需要设置为NO还原回去>：[UIView setAnimationsEnabled:YES];
+	29.工具类中使用懒加载：eg：
+/** 默认表情 */
+static NSArray *_defaultEmotions;
++ (NSArray *)defaultEmotions
+{
+    if (!_defaultEmotions) {
+        _defaultEmotions = [HMEmotion objectArrayWithFile:plist];
+    }
+    return _defaultEmotions;
+}
+主要在于可以使用_defaultEmotions，如果不这样使用static修饰，那么会报错
+
+	30.判断textView是否有输入字符：使用self.textView.attributedText而不使用self.textView.text（原因：attributedText包含-文字，表情等，而text只包含文字）
+
+	31.想要选中一段文字中某几个文字，得到其范围，一般使用UITextView，它的selectedRange属性就可以得到
+
+	32.NSAttributedString的enumerateAttributesInRange方法可以得到其某个属性的值的范围，当这个属性不存在时，也可以自己设定一个属性（字典属性）eg：[substr addAttribute:HMLinkText value:*capturedStrings range:*capturedRanges];
+
+	33.将某个控件加到最下层：[self insertSubview:bg atIndex:0];
+	34.将某个控件加到最上层Window：UIWindow *window = [[UIApplication sharedApplication].windows lastObject];[window addSubview:控件];
+
+	35.最先调用-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event<这个点在不在自身控件上，如果在返回yes，不在返回NO>，其次调用-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event可以拦截所有事件，所有事件最新调用的都是这个方法；如果内部返回 return self;那么表示所有事件都有自身来处理；如果返回nil，那么表示所有事件都不处理；比如：一个view上，某个控件内部某些点击不需要处理由父控件处理，可以使用

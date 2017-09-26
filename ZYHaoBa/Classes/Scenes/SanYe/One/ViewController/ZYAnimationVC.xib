@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZYAnimationVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9D6-kY-OZV">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="Xt4-o9-OY6"/>
+                    </constraints>
+                    <state key="normal" title="从上往下动画"/>
+                    <connections>
+                        <action selector="didClickTopBtn:" destination="-1" eventType="touchUpInside" id="ehc-lX-bcf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HoT-rZ-fl3">
+                    <state key="normal" title="从下往上动画"/>
+                    <connections>
+                        <action selector="didClickBoyyomBtn:" destination="-1" eventType="touchUpInside" id="dl8-5w-mKf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iW6-oa-xMM">
+                    <state key="normal" title="从左往右动画"/>
+                    <connections>
+                        <action selector="didClickLeftBtn:" destination="-1" eventType="touchUpInside" id="C4P-WL-0oH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hy3-Vs-oXX">
+                    <state key="normal" title="从右往左动画"/>
+                    <connections>
+                        <action selector="didClickRightBtn:" destination="-1" eventType="touchUpInside" id="LSe-jc-KjA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3C-Hm-TIG">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="5eo-b0-yKa"/>
+                    </constraints>
+                    <state key="normal" title="其他动画"/>
+                    <connections>
+                        <action selector="didClickRightBtn:" destination="-1" eventType="touchUpInside" id="S5A-rU-0GU"/>
+                        <action selector="didClickSpecialBtn:" destination="-1" eventType="touchUpInside" id="aII-7D-8Bz"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="9D6-kY-OZV" secondAttribute="trailing" id="28b-A4-oug"/>
+                <constraint firstItem="HoT-rZ-fl3" firstAttribute="height" secondItem="9D6-kY-OZV" secondAttribute="height" id="600-MR-7ck"/>
+                <constraint firstAttribute="trailing" secondItem="Hy3-Vs-oXX" secondAttribute="trailing" id="Ck7-AW-RvF"/>
+                <constraint firstItem="HoT-rZ-fl3" firstAttribute="top" secondItem="9D6-kY-OZV" secondAttribute="bottom" constant="8" id="FsU-by-zGW"/>
+                <constraint firstItem="Hy3-Vs-oXX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gwf-Zg-l7k"/>
+                <constraint firstItem="Hy3-Vs-oXX" firstAttribute="top" secondItem="iW6-oa-xMM" secondAttribute="bottom" constant="8" id="IEi-R6-NII"/>
+                <constraint firstItem="D3C-Hm-TIG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JU7-z5-cNk"/>
+                <constraint firstItem="HoT-rZ-fl3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JWm-La-3kv"/>
+                <constraint firstAttribute="trailing" secondItem="D3C-Hm-TIG" secondAttribute="trailing" id="ZUI-vL-RbA"/>
+                <constraint firstItem="iW6-oa-xMM" firstAttribute="top" secondItem="HoT-rZ-fl3" secondAttribute="bottom" constant="8" id="Zho-3z-oLY"/>
+                <constraint firstItem="9D6-kY-OZV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dDt-dw-1L7"/>
+                <constraint firstItem="iW6-oa-xMM" firstAttribute="height" secondItem="9D6-kY-OZV" secondAttribute="height" id="eAv-ie-JEa"/>
+                <constraint firstItem="D3C-Hm-TIG" firstAttribute="top" secondItem="Hy3-Vs-oXX" secondAttribute="bottom" constant="5" id="fxx-qH-Tqw"/>
+                <constraint firstItem="9D6-kY-OZV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="nGO-zT-Ll0"/>
+                <constraint firstItem="iW6-oa-xMM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rlD-dV-W71"/>
+                <constraint firstAttribute="trailing" secondItem="HoT-rZ-fl3" secondAttribute="trailing" id="vkn-9n-z09"/>
+                <constraint firstAttribute="trailing" secondItem="iW6-oa-xMM" secondAttribute="trailing" id="x0N-cp-4bP"/>
+                <constraint firstItem="Hy3-Vs-oXX" firstAttribute="height" secondItem="9D6-kY-OZV" secondAttribute="height" id="ywx-C5-C4o"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

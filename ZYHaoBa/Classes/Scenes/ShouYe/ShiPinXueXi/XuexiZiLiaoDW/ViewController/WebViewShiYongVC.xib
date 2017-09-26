@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewShiYongVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="ias-H8-UUe" id="hx3-HV-UxA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ias-H8-UUe">
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfh-lW-1wo">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="88" id="DeK-Nv-x4B"/>
+                        <constraint firstAttribute="height" constant="30" id="bzt-3g-QJe"/>
+                    </constraints>
+                    <state key="normal" title="去除广告"/>
+                    <connections>
+                        <action selector="clearAd" destination="-1" eventType="touchUpInside" id="LYI-e7-PW6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieD-Pq-kau">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="88" id="VqU-1D-MCe"/>
+                        <constraint firstAttribute="height" constant="30" id="mc0-X5-rpG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="获得网页标题"/>
+                    <connections>
+                        <action selector="getHtmlTitle" destination="-1" eventType="touchUpInside" id="b8y-8s-RlN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ias-H8-UUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="D4L-i4-hY6"/>
+                <constraint firstItem="Lfh-lW-1wo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Lyu-mn-geu"/>
+                <constraint firstItem="Lfh-lW-1wo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="d8q-dZ-cmE"/>
+                <constraint firstAttribute="trailing" secondItem="ieD-Pq-kau" secondAttribute="trailing" constant="15" id="ddQ-OR-LGt"/>
+                <constraint firstAttribute="trailing" secondItem="ias-H8-UUe" secondAttribute="trailing" id="grK-dd-ASY"/>
+                <constraint firstAttribute="bottom" secondItem="ias-H8-UUe" secondAttribute="bottom" id="jqE-JT-UVN"/>
+                <constraint firstItem="ieD-Pq-kau" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="rA0-My-JdY"/>
+                <constraint firstItem="ias-H8-UUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t40-pm-45x"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

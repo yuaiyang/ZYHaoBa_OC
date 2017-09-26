@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>group</key>
+		<string>视频学习</string>
+		<key>son</key>
+		<array>
+			<string>多线程和网络</string>
+			<string>UIViewController的解析（包含纯代码AppDelegate解析-视图内部文字说明）</string>
+			<string>视图布局</string>
+			<string>网易新闻</string>
+		</array>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>网络下载学习</string>
+		<key>son</key>
+		<array>
+			<string>待定</string>
+			<string>树状tabelView</string>
+			<string>字体随机色特殊排序</string>
+		</array>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>没事测试</string>
+		<key>son</key>
+		<array>
+			<string>一些参数默认数据</string>
+			<string>Bock，代理，通知，kvc的使用</string>
+			<string>测试：拨打电话，发送短信，设置图标右上角数字</string>
+			<string>定时器的使用</string>
+			<string>简单动画</string>
+			<string>导航栏的一些设置</string>
+			<string>SegmentedControl的一些使用</string>
+			<string>原来的第二个页面处理，（CALayer,DatePicker,AFN3.0测试，表情串，加载网页），主要在于TabView.h的使用</string>
+			<string>多选删除cell</string>
+		</array>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>一些特殊易忘总结</string>
+		<key>son</key>
+		<array>
+			<string>注意：afn更改主要是更改plist配置和代码修改，代码直接最新还原即可</string>
+			<string>1.页面说明：首页：主要是一些学习资料汇总 二页:一幕了然 三页：一些常用功能演示 四页：主要是tabelView的使用，一些抽取，方便维护的做法值得学习</string>
+			<string>2.设置图标右上角图标（拨打电话页面展示），iOS7.0以后有更改，需要用户同意显示才可以</string>
+			<string>3.设置定时器时，倒计时调用方法，按钮总是闪烁解决办法：将UIButton的类型由system改为custom</string>
+			<string>4.Cell注册：[self.tableView registerNib:[UINib nibWithNibName:@&quot;UsedTableViewCell&quot; bundle:nil] forCellReuseIdentifier:ID_cell];注册以后需要在cell的xib做标示，否则容易混淆</string>
+		</array>
+	</dict>
+</array>
+</plist>

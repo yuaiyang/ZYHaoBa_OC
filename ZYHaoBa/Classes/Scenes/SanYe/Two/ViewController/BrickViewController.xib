@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrickViewController">
+            <connections>
+                <outlet property="ballImageView" destination="EcN-Dv-wJb" id="KgI-l5-5Es"/>
+                <outlet property="messageLabel" destination="7rE-Vg-Psf" id="d4W-vu-a9r"/>
+                <outlet property="paddleImageView" destination="dls-UP-771" id="mry-sC-Lkl"/>
+                <outlet property="tapGesure" destination="vyA-Y5-gzL" id="3c6-8F-Ork"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="blockImages" destination="Jff-Rc-GiP" id="L23-Pj-FtE"/>
+                <outletCollection property="blockImages" destination="J75-vh-skK" id="dJc-St-8SQ"/>
+                <outletCollection property="blockImages" destination="owb-eI-ceS" id="V1Y-yp-aeg"/>
+                <outletCollection property="blockImages" destination="FvD-mk-7kY" id="HS1-3y-7MV"/>
+                <outletCollection property="blockImages" destination="Dbh-00-THk" id="4ud-69-pP3"/>
+                <outletCollection property="blockImages" destination="xfG-gg-uCf" id="5CE-DY-2cr"/>
+                <outletCollection property="blockImages" destination="Dcd-Zm-DuQ" id="xy8-sN-GNX"/>
+                <outletCollection property="blockImages" destination="ZT3-ph-zO8" id="FwS-oQ-hbv"/>
+                <outletCollection property="blockImages" destination="N6B-iB-juw" id="LBg-wF-fkG"/>
+                <outletCollection property="blockImages" destination="eb1-mG-Lua" id="fN1-zs-fs8"/>
+                <outletCollection property="blockImages" destination="kbr-zV-OsF" id="hrH-Pg-gNN"/>
+                <outletCollection property="blockImages" destination="Fwp-9a-CG0" id="NCy-o3-UwL"/>
+                <outletCollection property="blockImages" destination="0sA-FD-xs2" id="eXs-Gb-JHL"/>
+                <outletCollection property="blockImages" destination="rZG-aU-bu4" id="Wty-hl-kJu"/>
+                <outletCollection property="blockImages" destination="6Gt-Gu-Xt9" id="ZMB-pG-CgI"/>
+                <outletCollection property="blockImages" destination="Oa2-Vy-VcG" id="bIC-je-kli"/>
+                <outletCollection property="blockImages" destination="mBa-dJ-n7q" id="Za9-iO-9lw"/>
+                <outletCollection property="blockImages" destination="ed8-Qv-5rt" id="V9Q-PH-ddi"/>
+                <outletCollection property="blockImages" destination="cr3-46-RBD" id="fWK-VX-2Wj"/>
+                <outletCollection property="blockImages" destination="u6g-JV-O0t" id="yUm-8S-Jo6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="red.png" id="Jff-Rc-GiP">
+                    <rect key="frame" x="0.0" y="0.0" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="red.png" id="J75-vh-skK">
+                    <rect key="frame" x="64" y="0.0" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="red.png" id="owb-eI-ceS">
+                    <rect key="frame" x="128" y="0.0" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="red.png" id="FvD-mk-7kY">
+                    <rect key="frame" x="192" y="0.0" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="red.png" id="Dbh-00-THk">
+                    <rect key="frame" x="256" y="0.0" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yellow.png" id="xfG-gg-uCf">
+                    <rect key="frame" x="0.0" y="20" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yellow.png" id="Dcd-Zm-DuQ">
+                    <rect key="frame" x="64" y="20" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yellow.png" id="ZT3-ph-zO8">
+                    <rect key="frame" x="128" y="20" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yellow.png" id="N6B-iB-juw">
+                    <rect key="frame" x="192" y="20" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yellow.png" id="eb1-mG-Lua">
+                    <rect key="frame" x="256" y="20" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blue.png" id="kbr-zV-OsF">
+                    <rect key="frame" x="0.0" y="40" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blue.png" id="Fwp-9a-CG0">
+                    <rect key="frame" x="64" y="40" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blue.png" id="0sA-FD-xs2">
+                    <rect key="frame" x="128" y="40" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blue.png" id="rZG-aU-bu4">
+                    <rect key="frame" x="192" y="40" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blue.png" id="6Gt-Gu-Xt9">
+                    <rect key="frame" x="256" y="40" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="green.png" id="Oa2-Vy-VcG">
+                    <rect key="frame" x="0.0" y="60" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="green.png" id="mBa-dJ-n7q">
+                    <rect key="frame" x="64" y="60" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="green.png" id="ed8-Qv-5rt">
+                    <rect key="frame" x="128" y="60" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="green.png" id="cr3-46-RBD">
+                    <rect key="frame" x="192" y="60" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="green.png" id="u6g-JV-O0t">
+                    <rect key="frame" x="256" y="60" width="64" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ball.png" id="EcN-Dv-wJb">
+                    <rect key="frame" x="150" y="420" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="paddle.png" id="dls-UP-771">
+                    <rect key="frame" x="150" y="440" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="contentStretch" x="0.5" y="0.0" width="0.0" height="1"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="点击屏幕开始游戏！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7rE-Vg-Psf">
+                    <rect key="frame" x="0.0" y="220" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="vyA-Y5-gzL" appends="YES" id="4Mm-ia-V5v"/>
+                <outletCollection property="gestureRecognizers" destination="lAj-Ho-GIy" appends="YES" id="3ZV-jR-0Wh"/>
+            </connections>
+            <point key="canvasLocation" x="218.5" y="324.5"/>
+        </view>
+        <tapGestureRecognizer id="vyA-Y5-gzL">
+            <connections>
+                <action selector="tapScreen:" destination="-1" id="ZQS-kJ-Old"/>
+            </connections>
+        </tapGestureRecognizer>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="lAj-Ho-GIy">
+            <connections>
+                <action selector="dragPaddle:" destination="-1" id="ZJw-pf-Pbj"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="ball.png" width="128" height="40"/>
+        <image name="blue.png" width="128" height="40"/>
+        <image name="green.png" width="128" height="40"/>
+        <image name="paddle.png" width="128" height="40"/>
+        <image name="red.png" width="128" height="40"/>
+        <image name="yellow.png" width="128" height="40"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>
