@@ -13,7 +13,7 @@
 
 #import "ZYShouYeViewController.h"
 #import "MyHeader.h"
-// 学习记录
+// 学习记录控制器 单独
 #import "XueXiJiLuVC.h"
 
 @interface ZYShouYeViewController ()<UIScrollViewDelegate,MyHeaderDelegate,UITableViewDelegate,UITableViewDataSource>
