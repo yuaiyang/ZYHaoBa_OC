@@ -75,6 +75,7 @@
 			<string>原来的第二个页面处理，（CALayer,DatePicker,AFN3.0测试，表情串，加载网页），主要在于TabView.h的使用</string>
 			<string>多选删除cell</string>
 			<string>完全自定义键盘</string>
+			<string>模态弹窗</string>
 		</array>
 		<key>pushViewNames</key>
 		<array>
@@ -90,6 +91,7 @@
 			<string>YuanYouErYeVC</string>
 			<string>DuoXuanshanChuCellTVC</string>
 			<string>ZYZiDIngYiJianPanVC</string>
+			<string>ZYPresentAlertVC</string>
 		</array>
 	</dict>
 </array>

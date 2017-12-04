@@ -7,9 +7,9 @@
 //
 
 /* 本页面去plist文件更改数据即可完成
-1、son字段和pushViewNames一一对应，即可完成跳转配置
-2、需要增加学习记录，pushViewNames这个字段实际是txt的名字
-*/
+ 1、son字段和pushViewNames一一对应，即可完成跳转配置
+ 2、需要增加学习记录，pushViewNames这个字段实际是txt的名字
+ */
 
 #import "ZYShouYeViewController.h"
 #import "MyHeader.h"
@@ -137,7 +137,7 @@
 
 #pragma mark 自定义标题栏代理方法
 - (void)myHeaderDidSelectedHeader:(MyHeader *)header {
-    xh(@"点击按钮 %d", header.section);
+    xh(@"点击按钮 %ld", (long)header.section);
     // 处理展开折叠
     // 需要记录每个分组的展开折叠情况
     //    BOOL isOpen = [self.sectionStates[@(header.section)]boolValue];
@@ -169,7 +169,15 @@
     // 取出需要的值
     NSString *titleName = array[indexPath.row];
     NSString *VCName = VCArray[indexPath.row];
-
+    
+    if ([titleName isEqualToString:@"模态弹窗"]) {
+        UIViewController *vc = [[NSClassFromString(VCName) alloc] init];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        [self presentViewController:vc animated:YES completion:nil];
+        return;
+    }
+    
     if (indexPath.section == 0){
         XueXiJiLuVC * view = [[XueXiJiLuVC alloc] init];
         view.txtName = VCName;
@@ -198,3 +206,4 @@
 }
 
 @end
+

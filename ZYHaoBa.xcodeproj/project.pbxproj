@@ -25,6 +25,7 @@
 		AA7360921F7A38F400AAB28A /* FSBaseTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7360861F7A38F400AAB28A /* FSBaseTopTableViewCell.m */; };
 		AA7360931F7A38F400AAB28A /* FSBottomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7360881F7A38F400AAB28A /* FSBottomTableViewCell.m */; };
 		AA7360961F7A396000AAB28A /* FSScrollViewNestTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7360951F7A396000AAB28A /* FSScrollViewNestTableView.m */; };
+		AAB833DC1FD5483600AC76F8 /* ZYPresentAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB833DB1FD5483600AC76F8 /* ZYPresentAlertVC.m */; };
 		F3025FB51D6C58AF0016366A /* StartGoInAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3025FB41D6C58AF0016366A /* StartGoInAppView.m */; };
 		F30278311DAF7A5700EC37E3 /* ZYTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30278301DAF7A5700EC37E3 /* ZYTest.swift */; };
 		F307E90F1D8993B7008DD3C9 /* ZY2048ViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F307E90D1D8993B7008DD3C9 /* ZY2048ViewController1.xib */; };
@@ -590,6 +591,8 @@
 		AA7360881F7A38F400AAB28A /* FSBottomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBottomTableViewCell.m; sourceTree = "<group>"; };
 		AA7360941F7A396000AAB28A /* FSScrollViewNestTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollViewNestTableView.h; sourceTree = "<group>"; };
 		AA7360951F7A396000AAB28A /* FSScrollViewNestTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSScrollViewNestTableView.m; sourceTree = "<group>"; };
+		AAB833DA1FD5483600AC76F8 /* ZYPresentAlertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYPresentAlertVC.h; sourceTree = "<group>"; };
+		AAB833DB1FD5483600AC76F8 /* ZYPresentAlertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYPresentAlertVC.m; sourceTree = "<group>"; };
 		F3025FB31D6C58AF0016366A /* StartGoInAppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGoInAppView.h; sourceTree = "<group>"; };
 		F3025FB41D6C58AF0016366A /* StartGoInAppView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGoInAppView.m; sourceTree = "<group>"; };
 		F302782F1DAF7A5700EC37E3 /* ZYHaoBa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZYHaoBa-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1482,6 +1485,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AAB833D81FD547DF00AC76F8 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F36BC3CE1E8A623F0007EB1D /* GPUImage.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		AAB833D91FD5482700AC76F8 /* MotaiAlert */ = {
+			isa = PBXGroup;
+			children = (
+				AAB833DA1FD5483600AC76F8 /* ZYPresentAlertVC.h */,
+				AAB833DB1FD5483600AC76F8 /* ZYPresentAlertVC.m */,
+			);
+			path = MotaiAlert;
+			sourceTree = "<group>";
+		};
 		F3296F341E124ACA0040CD30 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1885,6 +1905,7 @@
 		F377676B1DC05E80004E3F6D /* MeiSHiCeShi */ = {
 			isa = PBXGroup;
 			children = (
+				AAB833D91FD5482700AC76F8 /* MotaiAlert */,
 				AA73606C1F7A38F400AAB28A /* FSScrollViewNestTableView */,
 				F377676C1DC05E80004E3F6D /* BlockShiYong */,
 				F37767741DC05E80004E3F6D /* BoDaDiaHuaDuanXIn */,
@@ -2548,6 +2569,7 @@
 				F3EFAAF61D5C2D9900C8872C /* ZYHaoBaTests */,
 				F3EFAB011D5C2D9900C8872C /* ZYHaoBaUITests */,
 				F3EFAADB1D5C2D9900C8872C /* Products */,
+				AAB833D81FD547DF00AC76F8 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4339,6 +4361,7 @@
 				F3537CF01E0125F300AFF7B3 /* ZYZiDIngYiJianPanVC.m in Sources */,
 				F337C4EF1DF7B01300653F24 /* HMEmotionGridView.m in Sources */,
 				F3F53B1C1E1CE6B000D0E410 /* MJMember.m in Sources */,
+				AAB833DC1FD5483600AC76F8 /* ZYPresentAlertVC.m in Sources */,
 				F37768831DC05E80004E3F6D /* HMFileSingleDownloader.m in Sources */,
 				F338707B1DB9BD0D00EDEB3E /* NewPagedFlowView.m in Sources */,
 				F3F53B201E1CE6B000D0E410 /* NSObject+MJCoding.m in Sources */,
